@@ -25,7 +25,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
-        projectBaseDir: my-custom-directory
+        projectBaseDir: db
         args: >
           -Dsonar.organization=${{ secrets.SONAR_ORG_KEY }}
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
