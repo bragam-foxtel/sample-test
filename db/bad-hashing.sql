@@ -1,0 +1,1 @@
+SELECT HASHBYTES('SHA1', MyColumn) FROM dbo.MyTable;
