@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request. 
+  push:
+    branches:
+      - main
+  pull_request:
+      types: [opened, synchronize, reopened]
+      
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+name: Analyze Code in Sonar Cloud
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      with:
+        projectBaseDir: db
+        args: >
+          -Dsonar.organization=${{ secrets.SONAR_ORG_KEY }}
+          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
