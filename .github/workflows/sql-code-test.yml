@@ -1,0 +1,11 @@
+name: Test MSSQL Scripts
+on:
+  pull_request:
+      types: [opened, synchronize, reopened]
+
+jobs:
+  test-sql-script:
+    runs-on: ubuntu-18.04 
+    # Those steps are actions, which may run inside a container
+    - uses: actions/checkout@v1
+    - uses: docker://mcr.microsoft.com/mssql/server:2019-latest
