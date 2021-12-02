@@ -15,6 +15,4 @@ jobs:
         fetch-depth: 0
     - uses: docker://mcr.microsoft.com/mssql/server:2019-latest
       with:
-        args: >
-          -DACCEPT_EULA=Y
-          -DSA_PASSWORD=yourStrong(!)Password
+        args: ACCEPT_EULA=Y
