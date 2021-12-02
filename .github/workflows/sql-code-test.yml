@@ -13,5 +13,5 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - uses: docker://mcr.microsoft.com/mssql/server:2019-latest --eula accept
+    - uses: docker://mcr.microsoft.com/mssql/server:2019-latest -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=yourStrong(!)Password" -p 1433:1433
       
